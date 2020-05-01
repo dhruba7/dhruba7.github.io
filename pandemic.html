@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid-19 pandemic</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    
+        <script src="calculate.js"></script>
+
+</head>
+
+<body>
+    <div class="container-fluid" >
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="display-4">Covid-19 pandemic</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                                   
+                    <div class="form-group">
+                        Total Infected: <input id="iinfect"class="form-control" type="text" name="t1" value=""
+                            placeholder="Enter total number of infected" />
+                    </div>
+
+                    <div class="form-group">
+                        Total Deaths: <input id="ideaths" class="form-control" type="text" name="t2" value=""
+                            placeholder="Enter total number of deaths" />
+                    </div>
+                    <div class="form-group">
+                            Total Recovered: <input id="irecover" class="form-control" type="text" name="t3" value=""
+                                placeholder="Enter total number ofrecovered" />
+                        </div>
+                    <div class="form-group">
+                        <button onclick="Percentage()">Calculate</button>
+                    </div>
+                    <div>
+                          <b>  <p id="result"> </p> </b>
+                        </div>
+                        <div>
+                             <b>  <p id="result1"> </p> </b>
+                            </div> 
+                
+              </div>
+           
+        </div>
+         
+    </div>
+
+</body>
+</html>

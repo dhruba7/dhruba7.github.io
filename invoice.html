@@ -1,0 +1,226 @@
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Invoice</title>
+    
+    <style>
+    .invoice-box {
+        max-width: 400px;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+        font-size: 16px;
+        line-height: 24px;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color: #555;
+    }
+    
+    .invoice-box table {
+        width: 100%;
+        line-height: inherit;
+        text-align: left;
+    }
+    
+    .invoice-box table td {
+        padding: 5px;
+        vertical-align: top;
+    }
+    
+    .invoice-box table tr td:nth-child(2) {
+        text-align: right;
+    }
+    
+    .invoice-box table tr.top table td {
+        padding-bottom: 20px;
+    }
+    
+    .invoice-box table tr.top table td.title {
+        font-size: 45px;
+        line-height: 45px;
+        color: #333;
+    }
+    
+    .invoice-box table tr.information table td {
+        padding-bottom: 40px;
+    }
+    
+    .invoice-box table tr.heading td {
+        background: #eee;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+    }
+    
+    .invoice-box table tr.details td {
+        padding-bottom: 20px;
+    }
+    
+    .invoice-box table tr.item td{
+        border-bottom: 1px solid #eee;
+    }
+    
+    .invoice-box table tr.item.last td {
+        border-bottom: none;
+    }
+    
+    .invoice-box table tr.total td:nth-child(2) {
+        border-top: 2px solid #eee;
+        font-weight: bold;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+        
+        .invoice-box table tr.information table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    }
+    
+    /** RTL **/
+    .rtl {
+        direction: rtl;
+        font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+    
+    .rtl table {
+        text-align: right;
+    }
+    
+    .rtl table tr td:nth-child(2) {
+        text-align: left;
+    }
+    </style>
+     <script type="text/javascript">
+     
+    
+    function vat(a) {
+      
+       return a*0.13;
+    }
+    function totalPrice(a){
+        return a-a*0.13;
+    }
+    function date(){
+            var d=new Date();
+
+            var dd=d.getDate();
+            var mm=d.getMonth()
+            var yy=d.getFullYear();
+            return yy +"/"+mm+"/"+dd;
+
+
+//            document.getElementById("date").innerHTML=h +":"+m+":"+s;
+            
+        }
+</script>
+      
+</head>
+
+<body>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="https://www.kindpng.com/picc/m/173-1738682_rooftop-logo-black-hd-png-download.png" style="width:50%; max-width:300px;">
+                            </td>
+                            
+                            <td>
+                                Invoice #: 123<br>
+                             <b>   Created: <p id="date"></p></b>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                Rooftop Restaurant and Bar<br>
+                                New Baneshwor<br>
+                                Kathmandu
+                            </td>
+                            
+                            <td >
+                                <p id="name" ></p>
+                                <p id="email"></p>
+                                <p id="phone"></p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+          
+                       
+            <tr class="heading">
+                <td>
+                    Item
+                </td>
+                
+                <td>
+                    Price
+                </td>
+            </tr>
+            
+          
+            
+            <tr class="item last">
+                <td>
+                  <p id="item"></p> 
+                </td>
+                
+                <td>
+                    <p id="price"></p> 
+                </td>  
+            </tr>
+            <tr>
+                    <td>TAX(13%)  </td>
+                    <td id="vat">3343</td>
+            </tr>
+            
+            <tr class="total">
+                <td></td>
+                
+                <td id="total">
+                  
+                </td>
+            </tr>
+        </table>
+        <tr >
+           <b> <td>
+                Payment Method
+            </td>
+            
+            <td>
+                    <i><p id="method"></p></i>
+            </td>
+        </b>
+        </tr>
+    </div>
+    <script>
+      
+            document.getElementById("name").innerHTML=localStorage.getItem("name");
+            document.getElementById("email").innerHTML=localStorage.getItem("email");
+            document.getElementById("phone").innerHTML=localStorage.getItem("phone");
+            document.getElementById("item").innerHTML=localStorage.getItem("item");
+            document.getElementById("vat").innerHTML="Rs."+vat(localStorage.getItem("price"));
+            document.getElementById("price").innerHTML="Rs."+localStorage.getItem("price");
+            document.getElementById("total").innerHTML="Total:"+"Rs."+totalPrice(localStorage.getItem("price"));
+            document.getElementById("method").innerHTML=localStorage.getItem("method");
+            document.getElementById("date").innerHTML=date();
+    </script>
+</body>
+</html>
